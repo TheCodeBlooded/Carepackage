@@ -1,0 +1,6 @@
+name: Carepackage
+version: 1.0.0
+main: me.codeblooded.carepackage.Main
+
+commands:
+     carepackage:

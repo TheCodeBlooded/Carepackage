@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Carepackage">
+    <output-path>$PROJECT_DIR$/out/artifacts/Carepackage</output-path>
+    <root id="archive" name="Carepackage.jar">
+      <element id="module-output" name="Carepackage" />
+      <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>
