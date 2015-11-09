@@ -11,6 +11,9 @@ Items:
             - '&eThe magical apple of wisdom'
         Data: 0
         Chance: 100
+        Enchant:
+            'DURABILITY':
+                Value: 5
     '2':
         Material: APPLE
         Amount: 8
@@ -19,6 +22,9 @@ Items:
             - '&eThe magical apple of wisdom'
         Data: 0
         Chance: 80
+        Enchant:
+            'DURABILITY':
+                Value: 5
     '3':
         Material: APPLE
         Amount: 6
@@ -27,6 +33,9 @@ Items:
             - '&eThe magical apple of wisdom'
         Data: 0
         Chance: 60
+        Enchant:
+            'DURABILITY':
+                Value: 5
     '4':
         Material: APPLE
         Amount: 4
@@ -35,6 +44,9 @@ Items:
             - '&eThe magical apple of wisdom'
         Data: 0
         Chance: 40
+        Enchant:
+            'DURABILITY':
+                Value: 5
     '5':
         Material: APPLE
         Amount: 2
@@ -43,3 +55,6 @@ Items:
             - '&eThe magical apple of wisdom'
         Data: 0
         Chance: 20
+        Enchant:
+            'DURABILITY':
+                Value: 5

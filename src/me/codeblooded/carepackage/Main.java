@@ -1,17 +1,15 @@
 package me.codeblooded.carepackage;
 
-import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.EntityType;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,7 +49,14 @@ public class Main extends JavaPlugin implements Listener {
         for(String data : getConfig().getConfigurationSection("Items").getKeys(false)) {
             String path = "Items." + data;
 
-            ItemStack item = new ItemStack(Material.valueOf(getConfig().getString(path + ".Material").toUpperCase()), getConfig().getInt(path + ".Amount"));
+            ItemStack item;
+
+            if(isInteger(getConfig().getString(path + ".Material"))) {
+                item = new ItemStack(Material.getMaterial(getConfig().getString(path + ".Material")), getConfig().getInt(path + ".Amount"));
+            } else {
+                item = new ItemStack(Material.valueOf(getConfig().getString(path + ".Material").toUpperCase()), getConfig().getInt(path + ".Amount"));
+            }
+
             ItemMeta im = item.getItemMeta();
 
             if(getConfig().contains(path + ".Name")) {
@@ -64,6 +69,12 @@ public class Main extends JavaPlugin implements Listener {
 
             if(getConfig().contains(path + ".Data")) {
                 item.setDurability((short) getConfig().getInt(path + ".Data"));
+            }
+
+            if(getConfig().contains(path + ".Enchants")) {
+                for(String enchant : getConfig().getConfigurationSection(path + ".Enchants").getKeys(false)) {
+                    item.addUnsafeEnchantment(Enchantment.getByName(enchant), getConfig().getInt(path + ".Enchants." + enchant + ".Value"));
+                }
             }
             item.setItemMeta(im);
 
@@ -102,7 +113,7 @@ public class Main extends JavaPlugin implements Listener {
                 EconomyResponse economyResponse = economy.withdrawPlayer(player, getConfig().getInt("Cost"));
 
                 if(economyResponse.transactionSuccess()) {
-                    FallingBlock fallingBlock = player.getLocation().getWorld().spawnFallingBlock(player.getLocation().add(0, 10, 0), Material.WOOD, (byte) 0);
+                    FallingBlock fallingBlock = player.getLocation().getWorld().spawnFallingBlock(player.getLocation().add(0, 50, 0), Material.WOOD, (byte) 0);
 
                     fallingBlock.setHurtEntities(false);
 
@@ -182,6 +193,15 @@ public class Main extends JavaPlugin implements Listener {
             lore.add(ChatColor.translateAlternateColorCodes('&', s));
         }
         return lore;
+    }
+
+    protected boolean isInteger(String object) {
+        try {
+            Integer.parseInt(object);
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
     protected boolean setupEconomy() {
