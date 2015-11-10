@@ -71,12 +71,14 @@ public class Main extends JavaPlugin implements Listener {
                 item.setDurability((short) getConfig().getInt(path + ".Data"));
             }
 
-            if(getConfig().contains(path + ".Enchants")) {
-                for(String enchant : getConfig().getConfigurationSection(path + ".Enchants").getKeys(false)) {
-                    item.addUnsafeEnchantment(Enchantment.getByName(enchant), getConfig().getInt(path + ".Enchants." + enchant + ".Value"));
+            item.setItemMeta(im);
+
+            if(getConfig().contains(path + ".Enchant")) {
+                for(String enchant : getConfig().getConfigurationSection(path + ".Enchant").getKeys(false)) {
+                    item.addUnsafeEnchantment(Enchantment.getByName(enchant), getConfig().getInt(path + ".Enchant." + enchant + ".Value"));
                 }
             }
-            item.setItemMeta(im);
+
 
             items.put(item, getConfig().getInt(path + ".Chance"));
         }
@@ -217,4 +219,5 @@ public class Main extends JavaPlugin implements Listener {
 
         return economy != null;
     }
+
 }

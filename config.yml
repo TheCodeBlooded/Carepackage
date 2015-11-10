@@ -4,15 +4,17 @@ ItemsPerPackage: 5
 Cost: 500
 Items:
     '1':
-        Material: APPLE
+        Material: DIAMOND_SWORD
         Amount: 10
-        Name: '&cMagical Apple'
+        Name: '&cMagical Sword'
         Lore:
-            - '&eThe magical apple of wisdom'
+            - '&eThe magical Sword of wisdom'
         Data: 0
-        Chance: 100
+        Chance: 50
         Enchant:
             'DURABILITY':
+                Value: 5
+            'FIRE_ASPECT':
                 Value: 5
     '2':
         Material: APPLE
@@ -31,30 +33,17 @@ Items:
         Name: '&2Magical Apple'
         Lore:
             - '&eThe magical apple of wisdom'
-        Data: 0
         Chance: 60
-        Enchant:
-            'DURABILITY':
-                Value: 5
     '4':
         Material: APPLE
         Amount: 4
-        Name: '&3Magical Apple'
-        Lore:
-            - '&eThe magical apple of wisdom'
-        Data: 0
         Chance: 40
         Enchant:
             'DURABILITY':
                 Value: 5
+            'FIRE_ASPECT':
+                Value: 2
     '5':
         Material: APPLE
         Amount: 2
-        Name: '&4Magical Apple'
-        Lore:
-            - '&eThe magical apple of wisdom'
-        Data: 0
         Chance: 20
-        Enchant:
-            'DURABILITY':
-                Value: 5
